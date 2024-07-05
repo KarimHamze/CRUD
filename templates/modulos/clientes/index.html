@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+<h3 class="text-center">Lista de clientes</h3>
+<div class="text-center">
+  <a href="/clientes/create" class="btn btn-primary">Nuevo</a>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <br />
+    <thead class="table table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Telefono</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cliente in datos_clientes %}
+      <tr class="">
+        <td scope="row">{{ cliente['id'] }}</td>
+        <td>{{ cliente['nombre'] }}</td>
+        <td>{{ cliente['telefono'] }}</td>
+        <td>{{ cliente['fecha'] }}</td>
+        <td>
+          <a href="" class="btn btn-success">editar</a>
+          <a href="" class="btn btn-danger">eliminar</a>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% include 'footer.html' %}
