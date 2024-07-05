@@ -1,0 +1,56 @@
+{% include 'header.html' %}
+
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">EDITAR CLIENTE</div>
+      <div class="card-body">
+        <form action="/clientes/editar/actualizar" method="post">
+          <input type="hidden" name="txtid" value="{{datos_clientes['id']}}" />
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nombre"
+              id=""
+              aria-describedby="helpId"
+              placeholder="Nombre"
+              value="{{datos_clientes['nombre']}}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Telefono</label>
+            <input
+              type="text"
+              class="form-control"
+              name="telefono"
+              id=""
+              aria-describedby="helpId"
+              placeholder="Telefono"
+              value="{{datos_clientes['telefono']}}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Fecha</label>
+            <input
+              type="date"
+              class="form-control"
+              name="fecha"
+              id=""
+              aria-describedby="helpId"
+              value="{{datos_clientes['fecha']}}"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-4"></div>
+
+{% include 'footer.html'%}

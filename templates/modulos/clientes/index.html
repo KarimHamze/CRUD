@@ -18,13 +18,17 @@
     <tbody>
       {% for cliente in datos_clientes %}
       <tr class="">
-        <td scope="row">{{ cliente['id'] }}</td>
+        <td scope="row">{{ loop.index }}</td>
         <td>{{ cliente['nombre'] }}</td>
         <td>{{ cliente['telefono'] }}</td>
         <td>{{ cliente['fecha'] }}</td>
         <td>
-          <a href="" class="btn btn-success">editar</a>
-          <a href="" class="btn btn-danger">eliminar</a>
+          <a href="/clientes/editar/{{cliente['id']}}" class="btn btn-success"
+            >editar</a
+          >
+          <a href="/clientes/borrar/{{cliente['id']}}" class="btn btn-danger"
+            >eliminar</a
+          >
         </td>
       </tr>
 

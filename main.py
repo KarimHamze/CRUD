@@ -48,5 +48,44 @@ def clientes_guardar():
    conexion.commit()
    return redirect('/clientes')
 
+@app.route('/clientes/editar/<int:id>')
+def editar_cliente(id):
+   conexion=mysql.connection
+   cursor=conexion.cursor()
+   cursor.execute('SELECT * FROM datos_clientes WHERE id=%s', (id,))
+   clientes=cursor.fetchone()
+   conexion.commit()
+   return render_template('modulos/clientes/edit.html', datos_clientes= clientes)
+
+@app.route('/clientes.editar/actualizar')
+
+@app.route('/clientes/borrar/<int:id>')
+def borrar_cliente(id):
+   conexion=mysql.connection
+   cursor=conexion.cursor()
+   cursor.execute('DELETE FROM datos_clientes WHERE id=%s',(id,))
+   conexion.commit()
+   return redirect('/clientes')
+
+@app.route('/clientes/editar/actualizar', methods=['POST'])
+def actualizar_cliente():
+   id=request.form['txtid']
+   nombre=request.form['nombre']
+   telefono=request.form['telefono']
+   fecha=request.form['fecha']
+
+   sql="UPDATE datos_clientes SET nombre=%s, telefono=%s, fecha=%s WHERE id = %s"
+   datos=(nombre, telefono, fecha, id)
+  
+   conexion=mysql.connection
+   cursor=conexion.cursor()
+   cursor.execute(sql, datos)
+   conexion.commit()
+   return redirect('/clientes')
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
